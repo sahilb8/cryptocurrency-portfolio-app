@@ -27,6 +27,7 @@ def app_nav():
         con.commit()
 
         messagebox.showinfo("Portfolio Notification", "Portfolio Cleared - Add New Coins")
+        #In read and write modes, reset moves the record pointer to the first case, allowing multiple data passes. In append mode, it deletes the current cursor instance and creates a new one.
         reset()
 
     def close_app():
@@ -44,6 +45,7 @@ def my_portfolio():
     api = json.loads(api_request.content)
 
     cursorObj.execute("SELECT * FROM coin")
+    #coins = [id,symbol,amt of coins owned,price]
     coins = cursorObj.fetchall()
 
     def font_color(amount):
